@@ -1,5 +1,4 @@
 import socket 
-import sys
 
 #creat a tcp/ip socket
 sock=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
@@ -10,7 +9,7 @@ print("starting up on %s poot %s" % server_address)
 sock.bind(server_address)
 
 #listen fir incomming connections
-sock.listen(1)
+sock.listen(10)
 
 while True:
     #wait for connection
