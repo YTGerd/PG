@@ -1,8 +1,8 @@
-import datetime
+import time
 import math
 from bluepy.btle import Scanner,DefaultDelegate
-#part of UUID
-#uuid="8856"
+
+
 class ScanDelegate(DefaultDelegate):
     def _int_(self):
         DefaultDelegate.__init__(self)
@@ -13,8 +13,7 @@ class ScanDelegate(DefaultDelegate):
         elif isNewData:
             print("Received new data from",dev.addr)
             
-#scanner=Scanner().withDelegate(ScanDelegate())
-#devices=scanner.scan(0.3)
+
 
 
 
@@ -38,20 +37,19 @@ def getCharacteristic ():
 
             
             if str(value).find("8856")!=-1:
-            # output current time
-               # print(datetime.datetime.now().strftime('%H:%M:%S'))
-                #print("Devices %s (%s),RSSI=%d dB" % (dev.addr,dev.addrType,dev.rssi))
-                #print("%s= %s" % (desc,value))
+            # timestamp
+               
+                t=time.time()
                 distance=CalculateDistance (dev.rssi,-60)
                 uuid="8856"
                # print("distance is %s" % distance)
-                a=("%s ,%s ,%s " % (datetime.datetime.now().strftime('%H:%M:%s'),distance,uuid))
-                #print(a)
+                usefulInformation=("%s ,%s ,%s " % (t,distance,uuid))
                 
-                return a
+                
+                return usefulInformation
     return("cannot detect the target object")
    
-#getCharacteristic ()
+
 
 
 
